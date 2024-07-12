@@ -5,11 +5,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
-import Modal from "./components/modals/Modal";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
+import RentModal from "./components/modals/RentModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,9 +31,10 @@ export default async function RootLayout({
       <body className={font.className}>
         <ToasterProvider />
         <LoginModal />
+        <RentModal />
         <RegisterModal /> 
         <Navbar currentUser={currentUser}/>
-        {children}
+        <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
   );

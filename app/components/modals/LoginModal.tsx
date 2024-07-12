@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import toast from "react-hot-toast";
@@ -49,6 +49,11 @@ const LoginModal = () => {
       loginModal.onClose(); // Close modal after login
     }
   };
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex gap-4 flex-col">
@@ -96,12 +101,9 @@ const LoginModal = () => {
           <div>Don&apos;t have an account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={() => {
-              loginModal.onClose();
-              registerModal.onOpen();
-            }}
+            onClick={toggle}
           >
-            Sign up
+            Create an account
           </div>
         </div>
       </div>
