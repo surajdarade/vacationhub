@@ -5,12 +5,12 @@ import { useCallback, useMemo } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-interface IUserFavorites {
+interface IUserFavourites {
   listingId: string;
   currentUser?: SafeUser | null;
 }
 
-const useFavorite = ({ listingId, currentUser }: IUserFavorites) => {
+const useFavourite = ({ listingId, currentUser }: IUserFavourites) => {
   const router = useRouter();
   const loginModal = useLoginModal();
   const hasFavourited = useMemo(() => {
@@ -18,17 +18,17 @@ const useFavorite = ({ listingId, currentUser }: IUserFavorites) => {
     return list.includes(listingId);
   }, [currentUser, listingId]);
 
-  const toggleFavorite = useCallback(
+  const toggleFavourite = useCallback(
     async (e: React.MouseEvent<HTMLDivElement>) => {
-      e.stopPropagation();
+      e.stopPropagation(); 
       if (!currentUser) loginModal.onOpen();
       try {
         let request;
 
         if (hasFavourited) {
-          request = () => axios.delete(`/api/favorites/${listingId}`);
+          request = () => axios.delete(`/api/favourites/${listingId}`);
         } else {
-          request = () => axios.post(`/api/favorites/${listingId}`);
+          request = () => axios.post(`/api/favourites/${listingId}`);
         }
         await request();
         router.refresh();
@@ -42,8 +42,8 @@ const useFavorite = ({ listingId, currentUser }: IUserFavorites) => {
 
   return {
     hasFavourited,
-    toggleFavorite,
+    toggleFavourite,
   };
 };
 
-export default useFavorite;
+export default useFavourite;
