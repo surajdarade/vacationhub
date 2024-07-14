@@ -4,21 +4,30 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-        pathname: "/**",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+        port: "",
       },
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
-        pathname: "/**",
+        pathname: "**",
+        port: "",
       },
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
-        pathname: "/**",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "**",
+        port: "",
       },
+      {
+        protocol: "https",
+        hostname: "files.edgestore.dev",
+        pathname: "**",
+        port: ""
+      }
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
