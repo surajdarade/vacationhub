@@ -1,6 +1,6 @@
-# Airbnb Clone 🏡
+# VacationHub 🏡
 
-Welcome to our Airbnb Clone web application! Explore and experience the joy of finding your perfect accommodation with ease. This project replicates some of the core features of the Airbnb platform, providing users with a seamless booking experience.
+Welcome to VacationHub! Explore and experience the joy of finding your perfect accommodation with ease. 
 
 ## Technologies Used 🚀
 
@@ -17,10 +17,3 @@ Welcome to our Airbnb Clone web application! Explore and experience the joy of f
 - **Search Filters**: Utilize advanced search filters to narrow down your options and find accommodations that suit your preferences.
 - **User Authentication**: Securely create an account, log in, and manage your profile for a personalized experience.
 - **Booking Management**: Easily manage your bookings, check reservation details, and plan your trip effortlessly.
-
-## Preview 📸
-
-[![Preview](https://github.com/satyamkumar420/airbnb-clone/assets/98641231/6cc1f328-7d93-4a1b-9fcc-1c43eca2aa19)](https://book-rooms.vercel.app/)
-
-
-Explore the Airbnb Clone [here](https://book-rooms.vercel.app/) and happy booking! 🌍✈️
