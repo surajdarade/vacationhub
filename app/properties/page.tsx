@@ -29,7 +29,7 @@ const PropertiesPage = async () => {
   }
 
   return (
-    <section className="main-container">
+    <div className="main-container">
       <Heading title="Properties" subtitle="List of your properties" backBtn />
       <div className="mt-8 md:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 md:gap-8 gap-4">
         {listings.map((listing) => {
@@ -46,7 +46,7 @@ const PropertiesPage = async () => {
           <Suspense fallback={<></>}>
             <LoadMore
               nextCursor={nextCursor}
-              fnArgs={{ userId: user.id ?? '' }} {/* Ensure userId is not undefined */}
+              fnArgs={{ userId: user.id ?? "" }} {/* Ensure userId is not undefined */}
               queryFn={getProperties as (args: Record<string, string>) => Promise<{ listings: { id: string; title: string; description: string; imageSrc: string; createdAt: Date; category: string; roomCount: number; bathroomCount: number; region: string | null; }[]; nextCursor: string | null; }>}
               queryKey={["properties", user.id]}
               favorites={favorites}
@@ -54,7 +54,7 @@ const PropertiesPage = async () => {
           </Suspense>
         ) : null}
       </div>
-    </section>
+    </div>
   );
 };
 
