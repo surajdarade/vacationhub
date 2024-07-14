@@ -1,14 +1,25 @@
-'use client';
+"use client";
 
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import Container from "../Container";
-import { GiBarn, GiBoatFishing, GiCactus, GiCastle, GiCaveEntrance, GiForestCamp, GiIsland, GiWindmill } from "react-icons/gi";
+import {
+  GiBarn,
+  GiBoatFishing,
+  GiCactus,
+  GiCastle,
+  GiCaveEntrance,
+  GiForestCamp,
+  GiIsland,
+  GiWindmill,
+} from "react-icons/gi";
 import { MdOutlineVilla } from "react-icons/md";
 import CategoryBox from "./CategoryBox";
 import { usePathname, useSearchParams } from "next/navigation";
 import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
+import Loader from "@/app/Loader";
+import { Suspense } from "react";
 
 export const categories = [
   {
@@ -89,28 +100,29 @@ export const categories = [
 ];
 
 const Categories = () => {
+  const params = useSearchParams();
+  const category = params?.get("category");
+  const pathName = usePathname();
 
-    const params = useSearchParams();
-    const category = params?.get('category');
-    const pathName = usePathname();
+  const isMainPage = pathName === "/";
 
-    const isMainPage = pathName === "/";
-
-    if(!isMainPage) return null;
+  if (!isMainPage) return null;
 
   return (
-    <Container>
-      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-        {categories.map((item) => (
+    <Suspense fallback={<Loader />}>
+      <Container>
+        <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
+          {categories.map((item) => (
             <CategoryBox
-            key={item.label}
-            label={item.label}
-            selected={category === item.label}
-            icon={item.icon}
+              key={item.label}
+              label={item.label}
+              selected={category === item.label}
+              icon={item.icon}
             />
-        ))}
-      </div>
-    </Container>
+          ))}
+        </div>
+      </Container>
+    </Suspense>
   );
 };
 

@@ -12,6 +12,8 @@ import { formatISO } from "date-fns";
 import Heading from "../Heading";
 import Calender from "../inputs/Calender";
 import Counter from "../inputs/Counter";
+import { Suspense } from "react";
+import Loader from "@/app/Loader";
 
 enum STEPS {
   LOCATION = 0,
@@ -172,16 +174,18 @@ const SearchModal = () => {
   }
 
   return (
-    <Modal
-      onClose={searchModal.onClose}
-      isOpen={searchModal.isOpen}
-      onSubmit={onSubmit}
-      title="Filters"
-      actionLabel="Search"
-      secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
-      secondaryActionLabel={secondaryActionLabel}
-      body={bodyContent}
-    />
+    <Suspense fallback={<Loader />}>
+      <Modal
+        onClose={searchModal.onClose}
+        isOpen={searchModal.isOpen}
+        onSubmit={onSubmit}
+        title="Filters"
+        actionLabel="Search"
+        secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
+        secondaryActionLabel={secondaryActionLabel}
+        body={bodyContent}
+      />
+    </Suspense>
   );
 };
 
