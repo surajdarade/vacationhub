@@ -1,62 +1,37 @@
-import React, { Suspense } from "react";
-
-import EmptyState from "@/components/EmptyState";
-import Heading from "@/components/Heading";
-import ListingCard from "@/components/ListingCard";
-import LoadMore from "@/components/LoadMore";
-
-import { getCurrentUser } from "@/services/user";
-import { getProperties } from "@/services/properties";
-import { getFavorites } from "@/services/favorite";
+import EmptyState from "../components/EmptyState";
+import ClientOnly from "../components/ClientOnly";
+import { getCurrentUser } from "../actions/getCurrentUser";
+import PropertiesClient from "./PropertiesClient";
+import getListings from "../actions/getListings";
 
 const PropertiesPage = async () => {
-  const user = await getCurrentUser();
-  const favorites = await getFavorites();
+  const currentUser = await getCurrentUser();
 
-  if (!user) {
-    return <EmptyState title="Unauthorized" subtitle="Please login" />;
+  if (!currentUser) {
+    return (
+      <ClientOnly>
+        <EmptyState title="Unauthorized" subtitle="Please login" />
+      </ClientOnly>
+    );
   }
 
-  const { listings, nextCursor } = await getProperties({ userId: user.id });
+  const listings = await getListings({ userId: currentUser.id });
 
-  if (!listings || listings.length === 0) {
+  if (listings.length === 0) {
     return (
-      <EmptyState
-        title="No properties found"
-        subtitle="Looks like you have no properties."
-      />
+      <ClientOnly>
+        <EmptyState
+          title="No properties found"
+          subtitle="Looks like you haven't reserved any trips"
+        />
+      </ClientOnly>
     );
   }
 
   return (
-    <>
-    <div className="main-container">
-      <Heading title="Properties" subtitle="List of your properties" backBtn />
-      <div className="mt-8 md:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 md:gap-8 gap-4">
-        {listings.map((listing) => {
-          const hasFavorited = favorites.includes(listing.id);
-          return (
-            <ListingCard
-              key={listing.id}
-              data={listing}
-              hasFavorited={hasFavorited}
-            />
-          );
-        })}
-        {nextCursor ? (
-          <Suspense fallback={<></>}>
-            <LoadMore
-              nextCursor={nextCursor}
-              fnArgs={{ userId: user.id ?? "" }} {/* Ensure userId is not undefined */}
-              queryFn={getProperties as (args: Record<string, string>) => Promise<{ listings: { id: string; title: string; description: string; imageSrc: string; createdAt: Date; category: string; roomCount: number; bathroomCount: number; region: string | null; }[]; nextCursor: string | null; }>}
-              queryKey={["properties", user.id]}
-              favorites={favorites}
-            />
-          </Suspense>
-        ) : null}
-      </div>
-    </div>
-    </>
+    <ClientOnly>
+      <PropertiesClient listings={listings} currentUser={currentUser} />
+    </ClientOnly>
   );
 };
 

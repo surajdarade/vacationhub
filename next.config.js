@@ -5,27 +5,22 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "**",
         port: "",
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
-        pathname: "**",
         port: "",
+        pathname: "/**",
       },
+      // add github hostname
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
-        pathname: "**",
         port: "",
+        pathname: "/**",
       },
-      {
-        protocol: "https",
-        hostname: "files.edgestore.dev",
-        pathname: "**",
-        port: ""
-      }
     ],
   },
 };

@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Airbnb Clone 🏡
 
-## Getting Started
+Welcome to our Airbnb Clone web application! Explore and experience the joy of finding your perfect accommodation with ease. This project replicates some of the core features of the Airbnb platform, providing users with a seamless booking experience.
 
-First, run the development server:
+## Technologies Used 🚀
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js**: A React framework for building server-side rendered and static web applications.
+- **Prisma**: A modern database toolkit that makes database access easy with type safety.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that adds static typing to the language.
+- **MongoDB**: A NoSQL database for flexible, scalable, and high-performance data storage.
+- **Tailwind CSS**: A utility-first CSS framework that makes it easy to design and build modern, responsive user interfaces.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features 🌟
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Property Listings**: Browse through a diverse range of property listings to find the perfect place for your stay.
+- **Search Filters**: Utilize advanced search filters to narrow down your options and find accommodations that suit your preferences.
+- **User Authentication**: Securely create an account, log in, and manage your profile for a personalized experience.
+- **Booking Management**: Easily manage your bookings, check reservation details, and plan your trip effortlessly.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Preview 📸
 
-## Learn More
+[![Preview](https://github.com/satyamkumar420/airbnb-clone/assets/98641231/6cc1f328-7d93-4a1b-9fcc-1c43eca2aa19)](https://book-rooms.vercel.app/)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Explore the Airbnb Clone [here](https://book-rooms.vercel.app/) and happy booking! 🌍✈️

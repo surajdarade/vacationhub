@@ -1,30 +1,48 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import "react-loading-skeleton/dist/skeleton.css";
-import Navbar from "@/components/navbar";
-import Providers from "@/components/Provider";
+import Navbar from "./components/navbar/Navbar";
+import ClientOnly from "./components/ClientOnly";
+import ToasterProvider from "./providers/ToasterProvider";
+import { getCurrentUser } from "./actions/getCurrentUser";
+import RegisterModal from "./components/modals/RegisterModal";
+import LoginModal from "./components/modals/LoginModal";
+import RentModal from "./components/modals/RentModal";
+import SearchModal from "./components/modals/SearchModal";
+import { Analytics } from "@vercel/analytics/react";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "VacationHub",
-  description:
-    "Your Ultimate Destination Connection. Discover a world of endless possibilities and seamless vacation planning at VacationHub.",
+  description: "VacationHub",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+    other: { rel: "apple-touch-icon", url: "/favicon.ico" },
+  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <Providers>
-          <Navbar />
-          <main className="pb-16 md:pt-28 pt-24">{children}</main>
-        </Providers>
+        <ClientOnly>
+          <ToasterProvider />
+          <SearchModal />
+          <RentModal />
+          <LoginModal />
+          <RegisterModal />
+          <Navbar currentUser={currentUser} />
+        </ClientOnly>
+        <div className="pb-20 pt-28">{children}</div>
+        <Analytics />
       </body>
     </html>
   );
