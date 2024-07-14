@@ -1,4 +1,3 @@
-"use client";
 import React, {
   ReactNode,
   useEffect,
@@ -93,8 +92,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
         });
         router.push("/trips");
         toast.success(`You've successfully reserved "${title}".`);
-        queryClient.invalidateQueries(["trips", user.id]);
-        queryClient.invalidateQueries(["reservations", user.id]);
+        queryClient.invalidateQueries({queryKey: ["trips", user?.id]});
+        queryClient.invalidateQueries({queryKey: ["reservations", user?.id]});
       } catch (error: any) {
         toast.error(error?.message);
       }
