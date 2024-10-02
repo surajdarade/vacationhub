@@ -15,5 +15,5 @@ Welcome to VacationHub! Explore and experience the joy of finding your perfect a
 
 - **Property Listings**: Browse through a diverse range of property listings to find the perfect place for your stay.
 - **Search Filters**: Utilize advanced search filters to narrow down your options and find accommodations that suit your preferences.
-- **User Authentication**: Securely create an account, log in, and manage your profile for a personalized experience.
+- **User Authentication**: Sign in, Sign up using Google OAuth, GitHub Auth and manage your profile for a personalized experience.
 - **Booking Management**: Easily manage your bookings, check reservation details, and plan your trip effortlessly.
