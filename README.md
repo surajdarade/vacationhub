@@ -9,7 +9,7 @@ Welcome to VacationHub! Explore and experience the joy of finding your perfect a
 - **React**: A JavaScript library for building user interfaces.
 - **TypeScript**: A superset of JavaScript that adds static typing to the language.
 - **MongoDB**: A NoSQL database for flexible, scalable, and high-performance data storage.
-- **Tailwind CSS**: A utility-first CSS framework that makes it easy to design and build modern, responsive user interfaces.
+- **Tailwind CSS**: Utility oriented CSS framework that makes it easy to design and build modern, responsive user interfaces.
 
 ## Features 🌟
 
